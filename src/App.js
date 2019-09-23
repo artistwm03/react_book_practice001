@@ -1,9 +1,9 @@
 import React from 'react';
-import Counter from './8_Hook/Counter';
+import Info from './8_Hook/Info';
 
 function App() {
   return (
-  <Counter />
+  <Info />
   );
 }
 
