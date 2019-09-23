@@ -16,7 +16,7 @@ const NewsListBlock = styled.div`
   }
 `;
 
-const NewsList = () => {
+const NewsList = ({ category }) => {
   const [articles, setArticles] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -24,8 +24,10 @@ const NewsList = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
+        const query = category === 'all' ? '' : `&category=${category}`;
         const response = await axios.get(
-            'https://newsapi.org/v2/top-headlines?country=kr&category=business&apiKey=d6c614055e7f49a485d3c121fa70ec32',
+            `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=d6c614055e7f49a485d3c121fa70ec32`
+            // '' 안에 주소를 넣으면 안되고.. `` 안에다가 넣어줘야됨...  왜 그런거지..???
         );
         setArticles(response.data.articles);
       } catch (e) {
@@ -34,7 +36,7 @@ const NewsList = () => {
       setLoading(false);
     };
     fetchData();
-  }, []);
+  }, [category]);
 
   // 대기 중일 때.
   if (loading) {
