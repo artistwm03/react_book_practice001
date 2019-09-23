@@ -1,9 +1,9 @@
 import React from 'react';
-import IterationSample from './6_IterationSample/IterationSample';
+import Counter from './8_Hook/Counter';
 
 function App() {
   return (
-  <IterationSample />
+  <Counter />
   );
 }
 
